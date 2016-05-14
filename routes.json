@@ -2,7 +2,7 @@
 	{
 		"path": "/",
 		"method": "get",
-		"handler": "system.api.helloworld"
+		"handler": "system.api.list"
 	},
 	{
 		"path": "/message",

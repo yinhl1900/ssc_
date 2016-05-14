@@ -107,9 +107,9 @@ function parseData(str,res){
       var json={};
       json.symbol= "kl8"
       json.name="币28"
-      json.sn =  $$('td').slice(0).eq(0).text()
+      json.playNo =  $$('td').slice(0).eq(0).text()
       json.win_number= $$('td').slice(1).eq(0).text()
-      json.time=  $$('td').slice(3).eq(0).text()
+      json.openTime=  $$('td').slice(3).eq(0).text()
       json.timestamp =parseUnixTime(json.time);
       //json.timestamp_limit =json.timestamp-30;
       json.now_timestamp=parseUnixTime(res.header.date)
@@ -177,9 +177,9 @@ Ssc.prototype.getRace= function (callback) {
 
           json.symbol= "race"
            json.name="赛车"
-          json.sn =  $$('td').slice(0).eq(0).text()
+          json.playNo =  $$('td').slice(0).eq(0).text()
           json.win_number= $$('td').slice(1).eq(0).text()
-          json.time=  $$('td').slice(2).eq(0).text()
+          json.openTime=  $$('td').slice(2).eq(0).text()
           json.timestamp =parseUnixTime(json.time);
           json.now_timestamp=parseUnixTime(res.header.date)
           json =calcRaceResultNumber(json,",")

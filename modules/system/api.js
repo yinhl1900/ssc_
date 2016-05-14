@@ -60,7 +60,7 @@ Api.prototype.onBlockchainLoaded = function () {
 	});
 }
 
-Api.prototype.helloworld = function (cb) {
+Api.prototype.next = function (cb) {
 
 	ssc.getKL8Data(function(err,data){
 		cb(null,data[0].next);
@@ -69,6 +69,14 @@ Api.prototype.helloworld = function (cb) {
 	//cb(null, {
 	//	test: "Hello, world!"
 	//});
+}
+
+Api.prototype.list = function (cb) {
+
+	ssc.getKL8Data(function(err,array){
+		cb(null,array);
+	});
+
 }
 
 Api.prototype.message = function (cb, query) {
