@@ -117,7 +117,6 @@ private.blockSync = function (cb) {
 					console.log("Received blocks from peer: " + res.peer.ip + ":" + res.peer.port);
 					private.findUpdate(lastBlock, res.peer, cb);
 				} else {
-					// console.log("Failed to load blocks from peer: " + res.peer.ip + ":" + res.peer.port);
 					setImmediate(cb);
 				}
 			} else {

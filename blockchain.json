@@ -73,7 +73,7 @@
 				"table": "transactions",
 				"alias": "t",
 				"on": {
-					"b.\"id\"": "t.\"blockId\""
+					"b.id": "t.blockId"
 				}
 			},
 			{
@@ -81,7 +81,7 @@
 				"table": "asset_dapptransfer",
 				"alias": "t_dt",
 				"on": {
-					"t.id": "t_dt.\"transactionId\""
+					"t.id": "t_dt.transactionId"
 				}
 			},
 			{
@@ -89,7 +89,7 @@
 				"table": "asset_myasset",
 				"alias": "t_ma",
 				"on": {
-					"t.id": "t_ma.\"transactionId\""
+					"t.id": "t_ma.transactionId"
 				}
 			},
 			{
@@ -97,7 +97,7 @@
 				"table": "asset_delegates",
 				"alias": "t_d",
 				"on": {
-					"t.id": "t_d.\"transactionId\""
+					"t.id": "t_d.transactionId"
 				}
 			},
 			{
@@ -105,7 +105,15 @@
 				"table": "asset_token",
 				"alias": "t_t",
 				"on": {
-					"t.id": "t_t.\"transactionId\""
+					"t.id": "t_t.transactionId"
+				}
+			},
+			{
+				"type": "left outer",
+				"table": "asset_entries",
+				"alias": "gb",
+				"on": {
+					"t.id": "gb.transactionId"
 				}
 			}
 		]
@@ -287,6 +295,33 @@
 			{
 				"name": "fund",
 				"type": "BigInt",
+				"not_null": true
+			},
+			{
+				"name": "transactionId",
+				"type": "String",
+				"length": 21,
+				"not_null": true
+			}
+		],
+		"foreignKeys": [
+			{
+				"field": "transactionId",
+				"table": "transactions",
+				"table_field": "id",
+				"on_delete": "cascade"
+			}
+		]
+	},
+	{
+		"table": "asset_entries",
+		"alias": "gb",
+		"type": "table",
+		"tableFields": [
+			{
+				"name": "entry",
+				"type": "String",
+				"length": 2000,
 				"not_null": true
 			},
 			{

@@ -54,7 +54,7 @@
 		"method": "get",
 		"handler": "blockchain.blocks.count"
 	},
-  	{
+	{
 		"path": "/withdrawal",
 		"method": "post",
 		"handler": "contracts.withdrawaltransfer.withdrawal"
@@ -73,5 +73,15 @@
 		"path": "/tokens",
 		"method": "get",
 		"handler": "blockchain.token.getTokens"
+	},
+	{
+		"path": "/entries/add",
+		"method": "put",
+		"handler": "contracts.Guestbook.add"
+	},
+	{
+		"path": "/entries/list",
+		"method": "get",
+		"handler" : "contracts.Guestbook.list"
 	}
 ]

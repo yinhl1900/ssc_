@@ -16,7 +16,6 @@ function Round(cb, _library) {
 
 private.loop = function (point, cb) {
 	modules.blockchain.accounts.getExecutor(function (err, executor) {
-
 		if (err) {
 			return cb();
 		}

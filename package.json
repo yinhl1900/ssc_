@@ -1,13 +1,13 @@
 {
-	"name": "lisk-dapps-sdk",
+	"name": "guestbookDapp",
 	"version": "1.0.0",
-	"description": "Official SDK for the Lisk decentralized application platform",
-	"repository": "git@github.com:LiskHQ/lisk-dapps-sdk.git",
+	"description": "Lisk guestbook dapp",
+	"repository": "git@github.com:MaxKK/guestbookDapp.git",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"author": "Boris Povod <boris@crypti.me>,Pavel Nekrasov <landgraf.paul@gmail.com>",
+	"author": "Max Kordek <max@lisk.io>",
 	"license": "MIT",
 	"dependencies": {
 		"async": "*",
