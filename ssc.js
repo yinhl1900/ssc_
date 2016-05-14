@@ -694,7 +694,7 @@ function addKL8Odd(obj){
 
 }
 
-module.exports = Ssc
+module.exports = new Ssc()
 
 
 
