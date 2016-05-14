@@ -192,7 +192,7 @@ angular.module('myApp', [
         secret = $scope.accountInfo.secret;
         $scope.secretDialog.open = false;
 
-        init();
+        //init();
     }
 
     $scope.submitInvest = function(){
