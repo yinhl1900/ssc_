@@ -65,13 +65,13 @@
               <tbody>
               <tr class="ng-scope" ng-repeat="bet in current.list">
                 <td class="padding-in-1400">
-                  {{bet.playNo}}
+                  {{bet.sn}}
                 </td>
                 <td class="ng-binding">
-                  {{bet.openTime|date:"MM/dd/yyyy @ hh:mm:ss"}}
+                  {{bet.time|date:"MM/dd/yyyy @ hh:mm:ss"}}
                 </td>
                 <td class="ng-binding">
-                  <a href="javascript:void(0)" ng-click="joinBet(bet.playNo)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">参与</a>
+                  <a href="javascript:void(0)" ng-click="joinBet(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">参与</a>
                 </td>
               </tr>
               </tbody>
@@ -106,10 +106,10 @@
         <tbody>
           <tr class="ng-scope" ng-repeat="bet in history.list">
             <td class="padding-in-1400">
-              {{bet.playNo}}
+              {{bet.sn}}
             </td>
             <td class="ng-binding">
-              {{bet.openTime|date:"MM/dd/yyyy @ hh:mm:ss"}}
+              {{bet.time|date:"MM/dd/yyyy @ hh:mm:ss"}}
             </td>
             <td class="ng-binding">
               {{bet.desc}}
