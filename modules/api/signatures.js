@@ -16,7 +16,7 @@ function Signatures(cb, _library) {
 
 /**
  * Get fee amount of signature creation.
- * @param {Signatures~getFee} cb - Callback handles response from Lisk.
+ * @param {Signatures~getFee} cb - Callback handles response from Crypti.
  */
 Signatures.prototype.getFee = function (cb) {
 	var message = {

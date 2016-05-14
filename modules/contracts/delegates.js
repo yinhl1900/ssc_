@@ -1,6 +1,6 @@
-var util = require("util");
-var async = require("async");
-var constants = require("../helpers/constants.js");
+var util = require('util');
+var async = require('async');
+var constants = require('../helpers/constants.js');
 
 var private = {}, self = null,
 	library = null, modules = null;
@@ -29,7 +29,7 @@ Delegates.prototype.calculateFee = function (trs) {
 
 Delegates.prototype.getBytes = function (trs) {
 	try {
-		var buf = new Buffer(trs.asset.delegates.list.join(","), "utf8");
+		var buf = new Buffer(trs.asset.delegates.list.join(","), 'utf8');
 	} catch (e) {
 		throw Error(e.toString());
 	}
@@ -39,30 +39,31 @@ Delegates.prototype.getBytes = function (trs) {
 
 Delegates.prototype.verify = function (trs, sender, cb, scope) {
 	if (trs.recipientId) {
-		return cb("Invalid recipient");
+		return cb("TRANSACTIONS.INVALID_RECIPIENT");
 	}
 
 	if (trs.amount != 0) {
-		return cb("Invalid transaction amount");
+		return cb("TRANSACTIONS.INVALID_AMOUNT");
 	}
 
 	if (!trs.asset.delegates.list || !trs.asset.delegates.list.length) {
-		return cb("No delegates found");
+		return cb("TRANSACTIONS.EMPTY_DELEGATES");
 	}
 
 	modules.api.dapps.getGenesis(function (err, res) {
 		if (trs.senderId != res.authorId) {
-			return cb("Failed to match sender with author");
+			return cb("TRANSACTIONS.DAPP_AUTHOR");
 		} else {
 			cb(null, trs);
 
 		}
 	});
+
 }
 
 Delegates.prototype.apply = function (trs, sender, cb, scope) {
-	if (sender.balance["LISK"] < trs.fee) {
-		return setImmediate(cb, "Account has no LISK: " + trs.id);
+	if (sender.balance < trs.fee) {
+		return setImmediate(cb, "Balance has no XCR: " + trs.id);
 	}
 
 	async.series([
@@ -73,7 +74,7 @@ Delegates.prototype.apply = function (trs, sender, cb, scope) {
 		function (cb) {
 			modules.blockchain.accounts.mergeAccountAndGet({
 				address: sender.address,
-				balance: {"LISK": -trs.fee}
+				balance: -trs.fee
 			}, cb, scope);
 		}
 	], cb);
@@ -87,15 +88,15 @@ Delegates.prototype.undo = function (trs, sender, cb, scope) {
 		function (cb) {
 			modules.blockchain.accounts.undoMerging({
 				address: sender.address,
-				balance: {"LISK": -trs.fee}
+				balance: -trs.fee
 			}, cb, scope);
 		}
 	], cb);
 }
 
 Delegates.prototype.applyUnconfirmed = function (trs, sender, cb, scope) {
-	if (sender.u_balance["LISK"] < trs.fee) {
-		return setImmediate(cb, "Account has no LISK: " + trs.id);
+	if (sender.u_balance < trs.fee) {
+		return setImmediate(cb, 'Account has no balance: ' + trs.id);
 	}
 
 	async.series([
@@ -106,7 +107,7 @@ Delegates.prototype.applyUnconfirmed = function (trs, sender, cb, scope) {
 		function (cb) {
 			modules.blockchain.accounts.mergeAccountAndGet({
 				address: sender.address,
-				u_balance: {"LISK": -trs.fee}
+				u_balance: -trs.fee
 			}, cb, scope);
 		}
 	], cb);
@@ -120,7 +121,7 @@ Delegates.prototype.undoUnconfirmed = function (trs, sender, cb, scope) {
 		function (cb) {
 			modules.blockchain.accounts.undoMerging({
 				address: sender.address,
-				u_balance: {"LISK": -trs.fee}
+				u_balance: -trs.fee
 			}, cb, scope);
 		}
 	], cb);

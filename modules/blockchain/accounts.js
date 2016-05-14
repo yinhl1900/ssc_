@@ -1,7 +1,7 @@
-var extend = require("extend");
-var util = require("util");
-var crypto = require("crypto-browserify");
-var bignum = require("browserify-bignum");
+var extend = require('extend');
+var util = require('util');
+var crypto = require('crypto-browserify');
+var bignum = require('browserify-bignum');
 
 var private = {}, self = null,
 	library = null, modules = null;
@@ -20,7 +20,7 @@ function Accounts(cb, _library) {
 function reverseDiff(diff) {
 	var copyDiff = diff.slice();
 	for (var i = 0; i < copyDiff.length; i++) {
-		var math = copyDiff[i][0] == "-" ? "+" : "-";
+		var math = copyDiff[i][0] == '-' ? '+' : '-';
 		copyDiff[i] = math + copyDiff[i].slice(1);
 	}
 	return copyDiff;
@@ -67,10 +67,8 @@ private.addAccount = function (account, scope) {
 	if (!account.address) {
 		account.address = self.generateAddressByPublicKey(account.publicKey);
 	}
-	account.balance = account.balance || {};
-	account.u_balance = account.u_balance || {};
-	account.balance["LISK"] = account.balance["LISK"] || 0;
-	account.u_balance["LISK"] = account.u_balance["LISK"] || 0;
+	account.balance = account.balance || 0;
+	account.u_balance = account.u_balance || 0;
 	(scope || private).accounts.push(account);
 	var index = (scope || private).accounts.length - 1;
 	(scope || private).accountsIndexById[account.address] = index;
@@ -96,18 +94,14 @@ Accounts.prototype.clone = function (cb) {
 	};
 
 	for (var i in r.data) {
-		for (var t in r.data[i].u_balance) {
-			r.data[i].u_balance[t] = r.data[i].balance[t] || 0;
-		}
+		r.data[i].u_balance = r.data[i].balance;
 	}
 
 	cb(null, r);
 }
 
 Accounts.prototype.getExecutor = function (cb) {
-	if (!process.argv[2]) {
-		return setImmediate(cb, "Secret is null");
-	}
+	if (!process.argv[2]) return setImmediate(cb, "secret is null");
 	if (private.executor) {
 		return setImmediate(cb, null, private.executor);
 	}
@@ -125,13 +119,13 @@ Accounts.prototype.getExecutor = function (cb) {
 }
 
 Accounts.prototype.generateAddressByPublicKey = function (publicKey) {
-	var publicKeyHash = crypto.createHash("sha256").update(publicKey, "hex").digest();
+	var publicKeyHash = crypto.createHash('sha256').update(publicKey, 'hex').digest();
 	var temp = new Buffer(8);
 	for (var i = 0; i < 8; i++) {
 		temp[i] = publicKeyHash[7 - i];
 	}
 
-	var address = bignum.fromBuffer(temp).toString() + "L";
+	var address = bignum.fromBuffer(temp).toString() + "C";
 	return address;
 }
 
@@ -141,7 +135,7 @@ Accounts.prototype.getAccount = function (filter, cb, scope) {
 		address = self.generateAddressByPublicKey(filter.publicKey);
 	}
 	if (!address) {
-		return cb("Account not found");
+		return cb("must provide address or publicKey");
 	}
 
 	cb(null, private.getAccount(address, scope));
@@ -161,7 +155,7 @@ Accounts.prototype.setAccountAndGet = function (data, cb, scope) {
 		if (data.publicKey) {
 			address = self.generateAddressByPublicKey(data.publicKey);
 		} else {
-			return cb("Missing address or publicKey");
+			return cb("must provide address or publicKey");
 		}
 	}
 	var account = private.getAccount(address, scope);
@@ -181,7 +175,7 @@ Accounts.prototype.mergeAccountAndGet = function (data, cb, scope) {
 		if (data.publicKey) {
 			address = self.generateAddressByPublicKey(data.publicKey);
 		} else {
-			return cb("Missing address or publicKey");
+			return cb("must provide address or publicKey");
 		}
 	}
 
@@ -201,10 +195,6 @@ Accounts.prototype.mergeAccountAndGet = function (data, cb, scope) {
 			account[key] = (account[key] || 0) + trueValue;
 		} else if (util.isArray(trueValue)) {
 			account[key] = applyDiff(account[key], trueValue);
-		} else if (typeof trueValue == "object") {
-			for (var token in trueValue) {
-				account[key][token] = (account[key][token] || 0) + trueValue[token];
-			}
 		}
 	})
 
@@ -217,7 +207,7 @@ Accounts.prototype.undoMerging = function (data, cb, scope) {
 		if (data.publicKey) {
 			address = self.generateAddressByPublicKey(data.publicKey);
 		} else {
-			return cb("Missing address or publicKey");
+			return cb("must provide address or publicKey");
 		}
 	}
 	var account = private.getAccount(address, scope);
@@ -237,10 +227,6 @@ Accounts.prototype.undoMerging = function (data, cb, scope) {
 		} else if (util.isArray(trueValue)) {
 			trueValue = reverseDiff(trueValue);
 			account[key] = applyDiff(account[key], trueValue);
-		} else if (typeof trueValue == "object") {
-			for (var token in trueValue) {
-				account[key][token] = (account[key][token] || 0) - trueValue[token];
-			}
 		}
 	});
 
@@ -259,10 +245,10 @@ Accounts.prototype.open = function (cb, query) {
 	if (!account) {
 		account = private.addAccount({
 			address: address,
-			publicKey: keypair.publicKey.toString("hex")
+			balance: 0,
+			u_balance: 0,
+			publicKey: keypair.publicKey.toString('hex')
 		});
-	}else{
-		account.publicKey = keypair.publicKey.toString("hex");
 	}
 
 	cb(null, {account: account});

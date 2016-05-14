@@ -1,5 +1,5 @@
 /**
- * Get time from Lisk epoch.
+ * Get time from Crypti epoch.
  * @param {number|undefined} time Time in unix seconds
  * @returns {number}
  */

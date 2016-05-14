@@ -15,10 +15,10 @@ function Accounts(cb, _library) {
 }
 
 /**
- * Open account in Lisk.
+ * Open account in Crypti.
  *
  * @param secret - Secret of account.
- * @param {Accounts~openCallback} cb - Callback handles response from Lisk.
+ * @param {Accounts~openCallback} cb - Callback handles response from Crypti.
  */
 Accounts.prototype.open = function (secret, cb) {
 	var message = {
@@ -51,7 +51,7 @@ Accounts.prototype.open = function (secret, cb) {
  * Get balance of account.
  *
  * @param address - Address of account
- * @param {Accounts~balanceCallback} cb - Callback handle response from Lisk.
+ * @param {Accounts~balanceCallback} cb - Callback handle response from Crypti.
  */
 Accounts.prototype.getBalance = function (address, cb) {
 	var message = {
@@ -75,7 +75,7 @@ Accounts.prototype.getBalance = function (address, cb) {
 /**
  * Get public key of account.
  * @param address - Address of account.
- * @param {Accounts~publicKeyCallback} cb - Callback handle response from Lisk.
+ * @param {Accounts~publicKeyCallback} cb - Callback handle response from Crypti.
  */
 Accounts.prototype.getPublickey = function (address, cb) {
 	var message = {
@@ -124,7 +124,7 @@ Accounts.prototype.generatePublickey = function (secret, cb) {
  * Get delegates that have votes from account.
  *
  * @param address - Address of account.
- * @param {Accounts~delegatesCallback} cb - Callback handle response from Lisk.
+ * @param {Accounts~delegatesCallback} cb - Callback handle response from Crypti.
  */
 Accounts.prototype.getDelegates = function (address, cb) {
 	var message = {
@@ -249,7 +249,7 @@ Accounts.prototype.addUsername = function (secret, publicKey, secondSecret, user
  */
 
 /**
- * Get account from Lisk.
+ * Get account from Crypti.
  *
  * @param address - address of account.
  * @param {Accounts~getAccountCallback} cb - Callback handle response.

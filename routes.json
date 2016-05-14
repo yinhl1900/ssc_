@@ -54,7 +54,7 @@
 		"method": "get",
 		"handler": "blockchain.blocks.count"
 	},
-	{
+  	{
 		"path": "/withdrawal",
 		"method": "post",
 		"handler": "contracts.withdrawaltransfer.withdrawal"
@@ -65,23 +65,18 @@
 		"handler": "blockchain.delegates.addDelegates"
 	},
 	{
-		"path": "/tokens",
-		"method": "put",
-		"handler": "blockchain.token.addToken"
+		"path": "/post/add",
+		"method": "post",
+		"handler": "contracts.Post.add"
 	},
 	{
-		"path": "/tokens",
-		"method": "get",
-		"handler": "blockchain.token.getTokens"
+		"path": "/comment/add",
+		"method": "post",
+		"handler": "contracts.Comment.add"
 	},
 	{
-		"path": "/entries/add",
-		"method": "put",
-		"handler": "contracts.Guestbook.add"
-	},
-	{
-		"path": "/entries/list",
-		"method": "get",
-		"handler" : "contracts.Guestbook.list"
+		"path": "/like/add",
+		"method": "post",
+		"handler": "contracts.Like.add"
 	}
 ]

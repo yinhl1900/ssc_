@@ -3,6 +3,7 @@ var util = require('util');
 var private = {}, self = null,
 	library = null, modules = null;
 
+
 /**
  * Creates instance of Sql API. Use *modules.api.sql* to get existing object.
  *
@@ -24,35 +25,25 @@ private.row2object = function (row) {
 	) {
 		out[this[i]] = row[i];
 	}
-
 	return out;
 }
 
 private.row2parsed = function (row) {
-	var values = [];
-	for (var key of Object.keys(row)) {
-		values.push(row[key]);
-	}
-
 	for (var
 			 out = {},
-			 value = null,
 			 fields = this.f,
 			 parsers = this.p,
 			 length = fields.length,
 			 i = 0; i < length; i++
 	) {
-		value = values[i];
-
 		if (parsers[i] === Buffer) {
-			out[fields[i]] = parsers[i](value, 'hex');
+			out[fields[i]] = parsers[i](row[i], 'hex');
 		} else if (parsers[i] === Array) {
-			out[fields[i]] = values ? value.split(",") : [];
-		} else if (value) {
-			out[fields[i]] = parsers[i](value);
+			out[fields[i]] = row[i] ? row[i].split(",") : []
+		} else {
+			out[fields[i]] = parsers[i](row[i]);
 		}
 	}
-
 	return out;
 }
 
@@ -66,9 +57,9 @@ private.parseFields = function ($fields) {
 	) {
 		current = $fields[fields[i]];
 		parsers[i] = current === Boolean ?
-			Boolean : (
+			$Boolean : (
 			current === Date ?
-				Date :
+				$Date :
 			current || String
 		)
 		;
@@ -81,7 +72,7 @@ private.parseFields = function ($fields) {
  * Run SQL "select" query.
  * @param request - JSON Sql request.
  * @param map - Fields map.
- * @param {Sql~selectCallback} cb - Callback handles response from Lisk.
+ * @param {Sql~selectCallback} cb - Callback handles response from Crypti.
  */
 Sql.prototype.select = function (request, map, cb) {
 	if (typeof map == 'function') {
@@ -113,7 +104,7 @@ Sql.prototype.select = function (request, map, cb) {
 /**
  * Insert values to Sql tables.
  * @param request - JSON Sql request to insert.
- * @param {Sql~insertCallback} cb - Callback handles response from Lisk.
+ * @param {Sql~insertCallback} cb - Callback handles response from Crypti.
  */
 Sql.prototype.insert = function (request, cb) {
 	var message = {
@@ -135,7 +126,7 @@ Sql.prototype.insert = function (request, cb) {
 /**
  * Insert batch of items to Sql tables.
  * @param request - JSON Sql request to insert batch.
- * @param {Sql~batchCallback} cb - Callback handles response from Lisk.
+ * @param {Sql~batchCallback} cb - Callback handles response from Crypti.
  */
 Sql.prototype.batch = function (request, cb) {
 	var message = {
@@ -156,7 +147,7 @@ Sql.prototype.batch = function (request, cb) {
 /**
  * Update values in Sql table.
  * @param request - JSON Sql request to update.
- * @param {Sql~updateCallback} cb - Callback handles response from Lisk.
+ * @param {Sql~updateCallback} cb - Callback handles response from Crypti.
  */
 Sql.prototype.update = function (request, cb) {
 	var message = {
@@ -178,7 +169,7 @@ Sql.prototype.update = function (request, cb) {
  * Remove data from Sql table.
  *
  * @param request - JSON Sql request to remove data from Sql table.
- * @param {Sql~removeCallback} cb - Callback handles response from Lisk.
+ * @param {Sql~removeCallback} cb - Callback handles response from Crypti.
  */
 Sql.prototype.remove = function (request, cb) {
 	var message = {
