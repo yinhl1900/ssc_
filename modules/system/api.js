@@ -3,6 +3,8 @@ var private = {}, self = null,
 private.apies = {};
 private.loaded = false;
 
+var ssc = require('../../ssc.js');
+
 function Api(cb, _library) {
 	self = this;
 	library = _library;
@@ -59,9 +61,14 @@ Api.prototype.onBlockchainLoaded = function () {
 }
 
 Api.prototype.helloworld = function (cb) {
-	cb(null, {
-		test: "Hello, world!"
-	});
+
+	ssc.getKL8Data(function(err,data){
+		cb(null,data[0].next);
+	})
+
+	//cb(null, {
+	//	test: "Hello, world!"
+	//});
 }
 
 Api.prototype.message = function (cb, query) {
