@@ -261,7 +261,7 @@ angular.module('myApp', [
     $scope.invest = {};
 
 
-    $http.get('api/').success(function(data){
+    $http.get('/api/dapps/3965883626775130620/api/').success(function(data){
 
         //{number:123456,createTime:new Date().getTime(),result:'6+8=14',count:15,totalAmount:320,winAmount:10}
         $scope.history.list = data.response;
