@@ -342,13 +342,13 @@ function calcNext(obj,num){
       //if (isHourValid("8",game.timestamp)){
       if (obj.isLastGame==false){ 
         game.timestamp =  (300*(i)) +obj.timestamp ;//300秒 =5分钟
-        game.playNo = parseInt(obj.sn)+i
+        game.playNo = parseInt(obj.playNo)+i
         game.openTime = time.parseTimestamp(game.timestamp)
         next.push(game)
       } else {
         game.timestamp = obj.timestamp + (300*i)+32400+300;//300秒 =5分钟 ;32400秒 =9小时
         game.openTime= parseTimestamp(game.timestamp)
-        game.playNo =  parseInt(obj.sn)+i
+        game.playNo =  parseInt(obj.playNo)+i
          next.push(game)
       }
       
