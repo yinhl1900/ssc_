@@ -261,14 +261,16 @@ angular.module('myApp', [
     $scope.invest = {};
 
 
-    $http.get('/api/history').success(function(data){
+    $http.get('api/').success(function(data){
+
         //{number:123456,createTime:new Date().getTime(),result:'6+8=14',count:15,totalAmount:320,winAmount:10}
-        $scope.history.list = data;
+        $scope.history.list = data.response;
+        $scope.current.list = data.response[0].next;
     })
 
-    $http.get('/api/next').success(function(data){
-        $scope.current.list = data;
-    })
+    //$http.get('/api/next').success(function(data){
+    //    $scope.current.list = data;
+    //})
 
     //init();
 
