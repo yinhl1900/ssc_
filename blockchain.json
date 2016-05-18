@@ -378,7 +378,7 @@
 		"tableFields":[
 			{
 				"name":"account",
-				"type":"string",
+				"type":"String",
 				"length":21,
 				"not_null":true
 			},{
@@ -387,11 +387,11 @@
 				"not_null": true
 			},{
 				"name":"sn",
-				"type":"string",
+				"type":"String",
 				"not_null":true
 			},{
 				"name":"status",
-				"type":"int",
+				"type":"Int",
 				"not_null":true
 			}
 		]
