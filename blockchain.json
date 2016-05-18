@@ -388,7 +388,8 @@
 			},{
 				"name":"sn",
 				"type":"String",
-				"not_null":true
+				"not_null":true,
+				"length":100
 			},{
 				"name":"status",
 				"type":"Int",
