@@ -5,12 +5,11 @@ var isRunning = false;
 var CronJob = require('cron').CronJob
 new CronJob('*/5 * * * * *', function(){
 
-    console.log('start')
+    console.log('will start')
 
     if(isRunning)
         return;
 
-    return;
     console.log('process user data');
 
     bet.findOne({status:0},function(err,betInfo){
