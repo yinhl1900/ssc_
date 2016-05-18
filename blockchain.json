@@ -372,8 +372,8 @@
 			}
 		]
 	},{
-		"table":"ssc_bet",
-		"alias":"s_bet",
+		"table":"ssc_bets",
+		"alias":"ssc_bets",
 		"type":"table",
 		"tableFields":[
 			{
