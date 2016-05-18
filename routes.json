@@ -5,6 +5,11 @@
 		"handler": "system.api.list"
 	},
 	{
+		"path":"/",
+		"method":"get",
+		"handler":"system.api.bet"
+	},
+	{
 		"path": "/message",
 		"method": "post",
 		"handler": "system.api.message"

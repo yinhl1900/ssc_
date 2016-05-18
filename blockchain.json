@@ -371,5 +371,29 @@
 				"on_delete": "cascade"
 			}
 		]
+	},{
+		"table":"ssc_bet",
+		"alias":"ssc",
+		"type":"table",
+		"tableFields":[
+			{
+				"name":"account",
+				"type":"string",
+				"length":21,
+				"not_null":true
+			},{
+				"name": "amount",
+				"type": "BigInt",
+				"not_null": true
+			},{
+				"name":"sn",
+				"type":"string",
+				"not_null":true
+			},{
+				"name":"status",
+				"type":"int",
+				"not_null":true
+			}
+		]
 	}
 ]

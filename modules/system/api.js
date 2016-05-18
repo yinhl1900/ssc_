@@ -79,6 +79,32 @@ Api.prototype.list = function (cb) {
 
 }
 
+Api.prototype.bet = function(cb,query){
+
+	modules.api.sql.insert({
+		table:"ssc_bet",
+		values: {
+			account: query.account,
+			amount: 1,
+			sn: query.sn,
+			status: 0
+		}},function(err,data){
+		console.log(err);
+		console.log(data);
+	});
+
+
+	//modules.api.sql.insert({
+	//	table: "asset_comments",
+	//	values: {
+	//		transactionId: trs.id,
+	//		postId: trs.asset.comment.postId,
+	//		text: trs.asset.comment.text
+	//	}
+	//}, cb);
+}
+
+
 Api.prototype.message = function (cb, query) {
 	library.bus.message("message", query);
 	cb(null, {});
