@@ -377,6 +377,14 @@
 		"type":"table",
 		"tableFields":[
 			{
+				"name": "id",
+				"type": "String",
+				"length": 21,
+				"not_null": true,
+				"unique": true,
+				"primary_key": true
+			},
+			{
 				"name":"account",
 				"type":"String",
 				"length":21,
