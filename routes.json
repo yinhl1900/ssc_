@@ -5,7 +5,7 @@
 		"handler": "system.api.list"
 	},
 	{
-		"path":"/",
+		"path":"/bet",
 		"method":"get",
 		"handler":"system.api.bet"
 	},
