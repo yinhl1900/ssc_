@@ -81,7 +81,7 @@ Api.prototype.list = function (cb) {
 
 Api.prototype.bet = function(cb,query){
 
-	var bet = require('./../../model/bet.js');
+	var bet = new require('./../../model/bet.js')();
 	console.log('bet:',bet);
 	bet.account = query.account;
 	bet.amount = 1;
