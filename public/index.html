@@ -71,7 +71,8 @@
                   {{bet.time|date:"MM/dd/yyyy @ hh:mm:ss"}}
                 </td>
                 <td class="ng-binding">
-                  <a href="javascript:void(0)" ng-click="joinBet(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">参与</a>
+                  <a href="javascript:void(0)" ng-click="betLo(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">押大</a>
+                  <a href="javascript:void(0)" ng-click="betHi(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">押小</a>
                 </td>
               </tr>
               </tbody>

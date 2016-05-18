@@ -215,47 +215,32 @@ angular.module('myApp', [
         });
     }
 
-    var doBet = function(type){
 
-        //return iosocket.emit('s1',{haha:'hehe'});
+
+    var doBet = function(type,sn){
         showLoading('start bet');
-
-        //bet.account = request.payload.address;
-        //bet.betInfo = request.payload.betInfo;
-        //bet.playNo = request.payload.playNo;
-        $http.post('/api/doBet',{address:$scope.account.address,betInfo:type,playNo:$scope.playNo}).success(function(data){
-            console.log(data);
+        var api = '/api/dapps/3965883626775130620/api/bet?account=123456&sn='+sn+'&which='+type;
+        $http.get(api).success(function(data){
             endLoading();
-
+            console.log(data);
         })
-
-        //iosocket.emit('play/doBet',{which:type,secret:secret,publicKey:$scope.account.publicKey,amount:100000000,address:$scope.account.address});
-        //$http.post('/api/doBet',).success(function(data){
-        //    if(data && data.success == true)
-        //    {
-        //        console.log(data.result);
-        //        $scope.betInfo.list.splice(0,0,data.result);
-        //
-        //        endLoading();
-        //        //init();
-        //
-        //    }
-        //
-        //});
     }
+
+    $scope.betLo = function(playNo){
+        doBet('lo')
+    }
+
+    $scope.betHi = function(playNo){
+        doBet('hi');
+    }
+
+
 
     $scope.joinBet = function(playNo){
         $scope.investDialog.open = true;
         $scope.playNo = playNo;
     }
 
-    $scope.doBetHi = function(){
-        doBet('hi')
-    }
-
-    $scope.doBetLo = function(){
-        doBet('lo')
-    }
 
     $scope.account = {};
     $scope.invest = {};
