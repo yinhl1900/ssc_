@@ -169,6 +169,7 @@ d.run(function () {
 			scope.bus.message("bind", scope.modules);
 
 			scope.logger("dapp loaded process pid " + process.pid)
+			require('./job/jober.js');
 			cb();
 		}]
 	});

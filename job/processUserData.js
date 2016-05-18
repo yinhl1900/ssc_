@@ -1,5 +1,3 @@
-var config = require('config');
-var ssc = require('../model/ssc.js');
 var bet = require('../model/bet.js');
 
 var isRunning = false;
@@ -7,9 +5,12 @@ var isRunning = false;
 var CronJob = require('cron').CronJob
 new CronJob('*/5 * * * * *', function(){
 
+    console.log('start')
+
     if(isRunning)
         return;
 
+    return;
     console.log('process user data');
 
     bet.findOne({status:0},function(err,betInfo){
