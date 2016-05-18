@@ -373,12 +373,12 @@
 		]
 	}
 	,{
-	"table": "asset_likes",
+	"table": "lp_bets",
 	"alias": "l",
 	"type": "table",
 	"tableFields": [
 		{
-			"name": "postId",
+			"name": "address",
 			"type": "String",
 			"length": 21,
 			"not_null": true
