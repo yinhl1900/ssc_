@@ -384,9 +384,19 @@
 			"not_null": true
 		},
 		{
-			"name": "transactionId",
+			"name": "amount",
+			"type": "BigInt",
+			"not_null": true
+		},
+		{
+			"name": "sn",
 			"type": "String",
-			"length": 21,
+			"length":50,
+			"not_null": true
+		},
+		{
+			"name": "status",
+			"type": "BigInt",
 			"not_null": true
 		}
 	],
