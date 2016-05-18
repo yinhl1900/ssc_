@@ -373,8 +373,8 @@
 		]
 	}
 	,{
-	"table": "liskplay_bets",
-	"alias": "l",
+	"table": "liskplay_bets_2",
+	"alias": "ll",
 	"type": "table",
 	"tableFields": [
 		{
@@ -399,6 +399,7 @@
 			"type": "BigInt",
 			"not_null": true
 		}
-	]
+
+		]
 	}
 ]
