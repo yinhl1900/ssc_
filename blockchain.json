@@ -384,10 +384,29 @@
 			"not_null": true
 		},
 		{
+			"name":"sn",
+			"type":"String",
+			"length":50,
+			"not_null":true
+		},
+		{
+			"name":"status",
+			"type":"BigInt",
+			"not_null":true
+		},
+		{
 			"name": "transactionId",
 			"type": "String",
 			"length": 21,
 			"not_null": true
+		}
+	],
+	"foreignKeys": [
+		{
+			"field": "transactionId",
+			"table": "transactions",
+			"table_field": "id",
+			"on_delete": "cascade"
 		}
 	]
 	}
