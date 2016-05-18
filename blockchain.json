@@ -373,19 +373,29 @@
 		]
 	}
 	,{
-	"table": "asset_messages",
-	"alias": "tm",
+	"table": "asset_likes",
+	"alias": "l",
 	"type": "table",
 	"tableFields": [
 		{
-			"name": "message",
+			"name": "postId",
 			"type": "String",
-			"length": 320
+			"length": 21,
+			"not_null": true
 		},
 		{
 			"name": "transactionId",
 			"type": "String",
-			"length": 21
+			"length": 21,
+			"not_null": true
+		}
+	],
+	"foreignKeys": [
+		{
+			"field": "transactionId",
+			"table": "transactions",
+			"table_field": "id",
+			"on_delete": "cascade"
 		}
 	]
 	}
