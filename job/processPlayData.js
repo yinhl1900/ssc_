@@ -1,5 +1,5 @@
 var async = require('async');
-var model = require('./ssc.js');
+var model = require('./../model/ssc.js');
 var ssc =  require('../ssc.js');
 
 var isRunning = false;

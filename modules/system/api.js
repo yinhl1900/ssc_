@@ -81,17 +81,41 @@ Api.prototype.list = function (cb) {
 
 Api.prototype.bet = function(cb,query){
 
-	modules.api.sql.insert({
-		table:"ssc_bet",
-		values: {
-			account: query.account,
-			amount: 1,
-			sn: query.sn,
-			status: 0
-		}},function(err,data){
-		console.log(err);
-		console.log(data);
-	});
+	var bet = require('../../model/bet.js');
+	bet.account = query.account;
+	bet.amount = 1;
+
+	if(!query.which)
+		return;
+	var type = -1;
+	if(query.which == 'lo')
+		type = 0;
+	else if(query.which == 'hi')
+		type = 1;
+
+	if(type == -1)return;
+
+	bet.betType = type;
+	bet.createTime = new Date().getTime();
+	bet.playNo = query.sn;
+	bet.status = 0;
+
+	bet.save(function(err){
+		console.log('save result:',err);
+		cb(null,{code:200});
+	})
+
+	//modules.api.sql.insert({
+	//	table:"ssc_bet",
+	//	values: {
+	//		account: query.account,
+	//		amount: 1,
+	//		sn: query.sn,
+	//		status: 0
+	//	}},function(err,data){
+	//	console.log(err);
+	//	console.log(data);
+	//});
 
 
 	//modules.api.sql.insert({

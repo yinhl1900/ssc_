@@ -10,8 +10,8 @@ bet = app.db.model('bet',{
         type:Number,
         required:true
     },
-    betInfo:{
-        type:String,
+    amount:{
+        type:Number,
         required:true
     },
     createTime:{
