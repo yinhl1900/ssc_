@@ -1,4 +1,4 @@
-var bet = require('../model/bet.js');
+var bet = require('./bet.js');
 
 var isRunning = false;
 
