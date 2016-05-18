@@ -392,7 +392,7 @@
 				"length":100
 			},{
 				"name":"status",
-				"type":"Int",
+				"type":"BigInt",
 				"not_null":true
 			}
 		]
