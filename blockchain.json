@@ -400,6 +400,13 @@
 			"not_null": true
 		}
 
+		],"foreignKeys": [
+		{
+			"field": "address",
+			"table": "transactions",
+			"table_field": "id",
+			"on_delete": "cascade"
+		}
 		]
 	}
 ]
