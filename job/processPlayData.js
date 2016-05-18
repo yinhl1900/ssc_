@@ -1,4 +1,3 @@
-var config = require('config');
 var async = require('async');
 var model = require('./ssc.js');
 var ssc =  require('../ssc.js');
