@@ -235,6 +235,18 @@ angular.module('myApp', [
     }
 
 
+    $scope.loadCurrent = function(){
+        loadData();
+    }
+
+    $scope.loadMy = function(){
+        $http.get('/api/dapps/3965883626775130620/api/').success(function(data){
+
+            //{number:123456,createTime:new Date().getTime(),result:'6+8=14',count:15,totalAmount:320,winAmount:10}
+            $scope.history.list = data.response;
+            $scope.current.list = data.response[0].next;
+        })
+    }
 
     $scope.joinBet = function(playNo){
         $scope.investDialog.open = true;
@@ -246,12 +258,18 @@ angular.module('myApp', [
     $scope.invest = {};
 
 
-    $http.get('/api/dapps/3965883626775130620/api/').success(function(data){
+    loadData();
 
-        //{number:123456,createTime:new Date().getTime(),result:'6+8=14',count:15,totalAmount:320,winAmount:10}
-        $scope.history.list = data.response;
-        $scope.current.list = data.response[0].next;
-    })
+    function loadData(){
+        $http.get('/api/dapps/3965883626775130620/api/').success(function(data){
+
+            //{number:123456,createTime:new Date().getTime(),result:'6+8=14',count:15,totalAmount:320,winAmount:10}
+            $scope.history.list = data.response;
+            $scope.current.list = data.response[0].next;
+        })
+    }
+
+
 
     //$http.get('/api/next').success(function(data){
     //    $scope.current.list = data;

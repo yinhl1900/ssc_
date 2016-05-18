@@ -79,6 +79,13 @@ Api.prototype.list = function (cb) {
 
 }
 
+Api.prototype.my = function(cb,query){
+	var bet = new require('./../../model/bet.js')();
+	bet.find({account:query.account},function(err,col){
+		cb(null,col);
+	});
+}
+
 Api.prototype.bet = function(cb,query){
 
 	var bet = new require('./../../model/bet.js')();

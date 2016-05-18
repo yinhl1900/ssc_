@@ -45,7 +45,7 @@
           <div class="panel panel-default">
             <div class="panel-heading cursor" ng-class="{'cursor': transactions.length}" eat-click-if="!transactions.length" ui-sref="main.transactions" href="/transactions">
               <h2 class="ng-binding">
-                当期投注
+                <span style="cursor:pointer" ng-click="loadCurrent()">当前投注</span> | <span style="cursor:pointer" ng-click="loadMy()">我的投注</span>
               </h2>
             </div>
             <table class="ng-scope">

@@ -10,6 +10,11 @@
 		"handler":"system.api.bet"
 	},
 	{
+		"path":"/my",
+		"method":"get",
+		"handler":"system.api.my"
+	},
+	{
 		"path": "/message",
 		"method": "post",
 		"handler": "system.api.message"
