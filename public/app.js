@@ -226,14 +226,29 @@ angular.module('myApp', [
         })
     }
 
-    $scope.betLo = function(playNo){
-        doBet('lo')
+    $scope.betLo = function(sn){
+        doBet('lo',sn)
     }
 
-    $scope.betHi = function(playNo){
-        doBet('hi');
+    $scope.betHi = function(sn){
+        doBet('hi',sn);
     }
 
+    $scope.betSingle = function(sn){
+        doBet('single',sn);
+    }
+
+    $scope.betDouble = function(sn){
+        doBet('double',sn);
+    }
+
+    $scope.betCenter = function(sn){
+        doBet('center',sn)
+    }
+
+    $scope.betSide = function(sn){
+        doBet('side',sn)
+    }
 
     $scope.loadCurrent = function(){
         loadData();
