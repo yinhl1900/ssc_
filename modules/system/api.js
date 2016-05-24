@@ -92,18 +92,7 @@ Api.prototype.bet = function(cb,query){
 	console.log('bet:',bet);
 	bet.account = query.account;
 	bet.amount = 1;
-
-	if(!query.which)
-		return;
-	var type = -1;
-	if(query.which == 'lo')
-		type = 0;
-	else if(query.which == 'hi')
-		type = 1;
-
-	if(type == -1)return;
-
-	bet.betType = type;
+	bet.betType = query.which;
 	bet.createTime = new Date().getTime();
 	bet.playNo = query.sn;
 	bet.status = 0;

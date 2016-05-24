@@ -255,11 +255,8 @@ angular.module('myApp', [
     }
 
     $scope.loadMy = function(){
-        $http.get('/api/dapps/3965883626775130620/api/').success(function(data){
-
-            //{number:123456,createTime:new Date().getTime(),result:'6+8=14',count:15,totalAmount:320,winAmount:10}
-            $scope.history.list = data.response;
-            $scope.current.list = data.response[0].next;
+        $http.get('/api/dapps/3965883626775130620/api/my?account=123456').success(function(data){
+            $scope.current.list = data.response;
         })
     }
 

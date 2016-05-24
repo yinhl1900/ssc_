@@ -7,7 +7,7 @@ bet = app.db.model('bet',{
         required:false
     },
     betType:{
-        type:Number,
+        type:String,
         required:true
     },
     amount:{
