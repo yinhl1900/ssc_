@@ -223,7 +223,9 @@ angular.module('myApp', [
         showLoading('start bet');
         var api = '/api/dapps/3965883626775130620/api/bet?account=123456&sn='+sn+'&which='+type;
         $http.get(api).success(function(data){
+
             endLoading();
+            $scope.loadMy();
             console.log(data);
         })
     }
