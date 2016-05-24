@@ -273,7 +273,7 @@ angular.module('myApp', [
 
         text += '|';
 
-        if (status=0)
+        if (status == 0)
             text += '未开奖';
         else if(status == 1)
             text +='已中奖';
