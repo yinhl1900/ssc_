@@ -258,7 +258,7 @@ angular.module('myApp', [
     }
 
     $scope.formatStatus = function(type,status){
-        var text;
+        var text = 'unknow';
 
         switch (type)
         {
@@ -267,7 +267,6 @@ angular.module('myApp', [
             case 'side':text='押边';break;
             case 'double':text='押双';break;
             case 'single':text='押单';break;
-            default:text='unknow';break;
         }
 
         text += '|';
