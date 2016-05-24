@@ -2,6 +2,23 @@ var bet = require('./../model/bet.js');
 
 var isRunning = false;
 
+function isWin(betType,result){
+    if(betType == 'lo' && result<14)
+        return true;
+    if(betType == 'hi' && result>13)
+        return true;
+    if(betType == 'side' && (result<10 && result>17))
+        return true;
+    if(betType == 'single' && result%2 != 0)
+        return true;
+    if(betType == 'double' && result %2==0)
+        return true;
+    if(betType == 'center' && (result>=10&& result<=17))
+        return true;
+
+    return false;
+}
+
 var CronJob = require('cron').CronJob
 new CronJob('*/5 * * * * *', function(){
 
@@ -14,10 +31,10 @@ new CronJob('*/5 * * * * *', function(){
 
     bet.findOne({status:0},function(err,betInfo){
         if(betInfo){
-            console.log(betInfo.playNo);
-            ssc.findOne({playNo:betInfo.playNo},function(err,sscInfo) {
+            console.log(betInfo.sn);
+            ssc.findOne({sn:betInfo.sn},function(err,sscInfo) {
                 if (sscInfo) {
-                    if ((betInfo.betInfo == 'hi' && sscInfo.result > 13) || (betInfo.betInfo == 'lo' && sscInfo.result < 14)) {
+                    if (isWin(betInfo.betType,sscInfo.result)){
 
                         bet.update({_id: betInfo._id}, {status: 1}, function (err, result) {
                             isRunning = false;
@@ -31,7 +48,7 @@ new CronJob('*/5 * * * * *', function(){
                     }
                 }
                 else{
-                    bet.update({_id:betInfo._id},{status:00},function(err,result){
+                    bet.update({_id:betInfo._id},{status:3},function(err,result){
                         isRunning = false;
 
                     });

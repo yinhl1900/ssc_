@@ -24,8 +24,8 @@ new CronJob('*/5 * * * * *', function(){
                     play.desc = item.num_h + '+' + item.num_t + '=' + item.num_sum;
                     item.num_o + '=' + item.num_sum;
                     play.result = item.num_sum;
-                    play.playNo = item.sn;
-                    play.openTime = item.time;
+                    play.sn = item.sn;
+                    play.time = item.time;
 
                     play.save(function (err) {
                         console.log(err);
