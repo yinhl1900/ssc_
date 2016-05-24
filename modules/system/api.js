@@ -93,8 +93,8 @@ Api.prototype.bet = function(cb,query){
 	bet.account = query.account;
 	bet.amount = 1;
 	bet.betType = query.which;
-	bet.createTime = new Date().getTime();
-	bet.playNo = query.sn;
+	bet.time = new Date().getTime();
+	bet.sn = query.sn;
 	bet.status = 0;
 
 	bet.save(function(err){

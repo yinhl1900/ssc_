@@ -14,11 +14,11 @@ bet = app.db.model('bet',{
         type:Number,
         required:true
     },
-    createTime:{
+    time:{
         type:Number,
         required:true
     },
-    playNo:{
+    sn:{
         type:String,
         required:true
     },
