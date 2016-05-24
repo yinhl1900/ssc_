@@ -2,11 +2,11 @@ var app = require('../application.js');
 
 ssc = app.db.model('ssc',{
 
-    playNo:{
+    sn:{
         type:String,
         required:false
     },
-    openTime:{
+    time:{
         type:String,
         required:true
     },
