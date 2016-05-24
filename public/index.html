@@ -78,6 +78,9 @@
                   <a href="javascript:void(0)" ng-click="betCenter(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">中(10到17)</a>
                   <a href="javascript:void(0)" ng-click="betSide(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">(<10,>17)</a>
                 </td>
+                <td class="ng-binding">
+                  {{bet.betType + ':' + formatStatus(bet.status)}}
+                </td>
               </tr>
               </tbody>
             </table>
