@@ -58,7 +58,7 @@
                   <translate><span class="ng-scope">开奖时间</span></translate>
                 </th>
                 <th>
-                  <translate><span class="ng-scope" ng-hide="showMy">操作</span></translate>
+                  <translate><span class="ng-scope" ng-hide="!showMy">操作</span></translate>
                 </th>
                 <th>
                   <translate><span class="ng-scope" ng-hide="showMy">投注结果</span></translate>
@@ -73,7 +73,7 @@
                 <td class="ng-binding">
                   {{bet.time|date:"MM/dd/yyyy @ hh:mm:ss"}}
                 </td>
-                <td class="ng-binding" ng-hide="showMy">
+                <td class="ng-binding" ng-hide="!showMy">
                   <a href="javascript:void(0)" ng-click="betHi(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">大(>14)</a>
                   <a href="javascript:void(0)" ng-click="betLo(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">小(<15)</a>
                   <a href="javascript:void(0)" ng-click="betSingle(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">单(奇数)</a>
