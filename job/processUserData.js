@@ -47,12 +47,12 @@ new CronJob('*/5 * * * * *', function(){
                         });
                     }
                 }
-                else{
-                    bet.update({_id:betInfo._id},{status:3},function(err,result){
-                        isRunning = false;
-
-                    });
-                }
+                //else{
+                //    bet.update({_id:betInfo._id},{status:3},function(err,result){
+                //        isRunning = false;
+                //
+                //    });
+                //}
             })
         }
 

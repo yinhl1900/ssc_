@@ -269,6 +269,7 @@ angular.module('myApp', [
             case 'side':text='押边';break;
             case 'double':text='押双';break;
             case 'single':text='押单';break;
+            case 'center':text='押中间';break;
         }
 
         text += '|';
