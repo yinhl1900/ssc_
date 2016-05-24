@@ -284,8 +284,9 @@ angular.module('myApp', [
 
     $scope.loadMy = function(){
         $scope.showMy = true;
+        showLoading('loading data');
         $http.get('/api/dapps/3965883626775130620/api/my?account=123456').success(function(data){
-
+            endLoading();
             $scope.current.list = data.response;
         })
     }
@@ -303,8 +304,10 @@ angular.module('myApp', [
     loadData();
 
     function loadData(){
+        showLoading('loading data');
         $http.get('/api/dapps/3965883626775130620/api/').success(function(data){
 
+            endLoading();
             //{number:123456,createTime:new Date().getTime(),result:'6+8=14',count:15,totalAmount:320,winAmount:10}
             $scope.history.list = data.response;
             $scope.current.list = data.response[0].next;
