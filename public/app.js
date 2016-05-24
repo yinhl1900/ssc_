@@ -171,6 +171,8 @@ angular.module('myApp', [
         ]
     }
 
+    $scope.showMy = false;
+
     $scope.current = {
         list:[
 
@@ -251,11 +253,40 @@ angular.module('myApp', [
     }
 
     $scope.loadCurrent = function(){
+        $scope.showMy = false;
         loadData();
     }
 
+    $scope.formatStatus = function(type,status){
+        var text;
+
+        switch (type)
+        {
+            case 'lo':text='押小';break;
+            case 'hi':text='押大';break;
+            case 'side':text='押边';break;
+            case 'double':text='押双';break;
+            case 'single':text='押单';break;
+            default:text='unknow';break;
+        }
+
+        text += '|';
+
+        if (status=0)
+            text += '未开奖';
+        else if(status == 1)
+            text +='已中奖';
+        else if(status == 2)
+            text += '未中奖';
+
+        return text;
+    }
+
+
     $scope.loadMy = function(){
+        $scope.showMy = true;
         $http.get('/api/dapps/3965883626775130620/api/my?account=123456').success(function(data){
+
             $scope.current.list = data.response;
         })
     }

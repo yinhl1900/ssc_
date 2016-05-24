@@ -70,7 +70,7 @@
                 <td class="ng-binding">
                   {{bet.time|date:"MM/dd/yyyy @ hh:mm:ss"}}
                 </td>
-                <td class="ng-binding">
+                <td class="ng-binding" ng-hide="showMy">
                   <a href="javascript:void(0)" ng-click="betHi(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">大(>14)</a>
                   <a href="javascript:void(0)" ng-click="betLo(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">小(<15)</a>
                   <a href="javascript:void(0)" ng-click="betSingle(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">单(奇数)</a>
@@ -78,8 +78,8 @@
                   <a href="javascript:void(0)" ng-click="betCenter(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">中(10到17)</a>
                   <a href="javascript:void(0)" ng-click="betSide(bet.sn)" class="btn_v2 fw_600 wide_btn blue_btn" style="color:white">(<10,>17)</a>
                 </td>
-                <td class="ng-binding">
-                  {{bet.betType + ':' + formatStatus(bet.status)}}
+                <td class="ng-binding" ng-hide="showMy">
+                  {{formatStatus(bet.betType,bet.status)}}
                 </td>
               </tr>
               </tbody>
